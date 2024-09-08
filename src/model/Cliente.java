@@ -10,9 +10,8 @@ public class Cliente{
 	
 //---------------------
 	
-	public Cliente(Pessoa pessoa, Processo processo){
+	public Cliente(Pessoa pessoa){
 		this.pessoa = pessoa;
-		processos.add(processo);
 	}
 	
 	public StringBuilder getExtratoContas() {
@@ -35,6 +34,8 @@ public class Cliente{
 		return processos;
 	}
 	
-	
+	public void addProcesso(Processo p) {
+		this.processos.add(p);
+	}
 	
 }

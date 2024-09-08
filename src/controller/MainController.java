@@ -14,16 +14,39 @@ public class MainController implements Serializable {
 	private static MainController instance;
 
 	
-	private CatalogoController catalogoController;
+	private ProcessoController processoController;
 
-	// declarar os demais controladores
+	private PessoaController pessoaController;
+	
+	private ClienteController clienteController;
+	
+	private AdvogadoController advogadoController;
+	
+	private AudienciaController audienciaController;
+	
+	private ContaController contaController;
+
+	private TribunalController tribunalController;
+
 
 	
 	private MainController() {
 		
-		catalogoController = new CatalogoController();
+		 processoController = new  ProcessoController();
 		
-		// instanciar os demais controladores
+		   pessoaController = new    PessoaController();
+		
+		  clienteController = new   ClienteController();
+		
+		 advogadoController = new  AdvogadoController();
+		
+		audienciaController = new AudienciaController();
+		
+		    contaController = new     ContaController();
+		
+		 tribunalController = new  TribunalController();
+		
+		// instanciar os controladores
 		
 	}
 
@@ -32,9 +55,34 @@ public class MainController implements Serializable {
 	}
 
 	
-	public static CatalogoController getCatalogoController() {
-		return instance.catalogoController;
+	public static ProcessoController getProcessoController() {
+		return instance.processoController;
 	}
+	
+	public static PessoaController getPessoaController() {
+		return instance.pessoaController;
+	}
+	
+	public static ClienteController getClienteController() {
+		return instance.clienteController;
+	}
+	
+	public static AdvogadoController getAdvogadoController() {
+		return instance.advogadoController;
+	}
+	
+	public static AudienciaController getAudienciaController() {
+		return instance.audienciaController;
+	}
+	
+	public static ContaController getContaController() {
+		return instance.contaController;
+	}
+
+	public static TribunalController getTribunalController() {
+		return instance.tribunalController;
+	}
+	
 
 	// implementar metodos acessadores estaticos para os demais controladores
 	

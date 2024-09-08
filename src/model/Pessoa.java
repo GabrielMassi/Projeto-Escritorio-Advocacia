@@ -10,11 +10,9 @@ public abstract class Pessoa {
 	
 //----------------------------
 	
-	public Pessoa(String nome, String email, long telefone) {
+	public Pessoa(String nome) {
 		super();
 		this.nome = nome;
-		this.email = email;
-		this.telefone = telefone;
 	}
 
 	abstract public String getCadastroRF();

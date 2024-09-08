@@ -50,8 +50,9 @@ public class Advogado {
 			sb.append("\n\t Cliente:" + p.getCliente().getPessoa().getNome());
 			sb.append("\n\t Parte Contrária: " + p.getParteContraria().getNome());
 			sb.append("\n\t Status: " + p.getFase());
-			
 		}
+		
+		return sb;
 	}
 	
 }

@@ -1,7 +1,7 @@
 package model;
 
 import java.util.Date;
-import java.util.Map;
+import java.util.ArrayList;
 
 public class Processo {
 
@@ -15,7 +15,7 @@ public class Processo {
 	
 	private Pessoa parteContraria;
 	
-	private Map<Date, Audiencia> audiencias = new Map<Date, Audiencia>();
+	private ArrayList<Audiencia> audiencias = new ArrayList<>();
 	
 	private IConta conta;
 	
@@ -69,7 +69,7 @@ public class Processo {
 	}
 
 	public void addAudiencia(Audiencia a) {
-		audiencias.add(a.getData(), a);
+		audiencias.add(a);
 	}
 	
 	public double getTotalCustas() {

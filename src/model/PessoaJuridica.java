@@ -6,11 +6,11 @@ public class PessoaJuridica extends Pessoa{
 	
 	//----------------------
 	
-	public PessoaJuridica(String nome, String email, long telefone, String cnpj) {
-		super(nome, email, telefone);
+	public PessoaJuridica(String nome, String cnpj) {
+		super(nome);
 		this.cnpj = cnpj;
 	}
-		
+	
 	public String getCadastroRF() {
 		return this.cnpj;
 	}
