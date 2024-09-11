@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
+import util.EFaseProcesso;
+
 import java.lang.StringBuilder;
 
 public class Advogado {

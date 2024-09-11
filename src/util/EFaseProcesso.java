@@ -1,4 +1,4 @@
-package model;
+package util;
 
 public enum EFaseProcesso {
 	INICIAL("Inicial"), INSTRUCAO("Instrução"), DECISAO("Decisão"), RECURSO("Recurso"), ENCERRADO(null);

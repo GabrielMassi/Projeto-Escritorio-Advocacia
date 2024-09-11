@@ -2,7 +2,7 @@ package util;
 
 import java.util.InputMismatchException;
 
-public class ValidaCPF {
+public class Validacoes {
 
     public static boolean isCPF(String CPF) {
         // considera-se erro CPF"s formados por uma sequencia de numeros iguais
@@ -63,4 +63,12 @@ public class ValidaCPF {
             return(CPF.substring(0, 3) + "." + CPF.substring(3, 6) + "." +
             CPF.substring(6, 9) + "-" + CPF.substring(9, 11));
         }
+        
+    public static boolean isOab(String OAB) {
+    	if(OAB.length() == 6)
+    		return true;
+    	else
+    		return false;
     }
+    
+}

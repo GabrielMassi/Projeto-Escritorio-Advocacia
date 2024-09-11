@@ -1,6 +1,9 @@
 package model;
 
 import java.util.Date;
+
+import util.EFaseProcesso;
+
 import java.util.ArrayList;
 
 public class Processo {
@@ -17,6 +20,8 @@ public class Processo {
 	
 	private Pessoa parteContraria;
 	
+	private Advogado advogado;
+	
 	private ArrayList<Audiencia> audiencias = new ArrayList<>();
 	
 	private IConta conta;
@@ -25,13 +30,15 @@ public class Processo {
 	
 //-------------------
 
-	public Processo(Cliente cliente, Pessoa parteContraria, Tribunal tribunal) {
+	public Processo(Cliente cliente, Pessoa parteContraria, Tribunal tribunal, Advogado advogado) {
 		this.numero = increment;
 		increment++;
 		this.cliente = cliente;
 		this.parteContraria = parteContraria;
 		this.tribunal = tribunal;
+		this.advogado = advogado;
 		this.fase = EFaseProcesso.INICIAL;
+		this.conta = new Conta();
 	}
 	
 	public long getNumero() {
@@ -54,6 +61,14 @@ public class Processo {
 		return parteContraria;
 	}
 	
+	public Advogado getAdvogado() {
+		return advogado;
+	}
+
+	public void setAdvogado(Advogado advogado) {
+		this.advogado = advogado;
+	}
+	
 	public Tribunal getTribunal() {
 		return tribunal;
 	}
@@ -72,7 +87,8 @@ public class Processo {
 		this.fase = fase;
 	}
 
-	public void addAudiencia(Audiencia a) {
+	public void addAudiencia(String recomend) {
+		Audiencia a = new Audiencia(this, recomend);
 		audiencias.add(a);
 	}
 	
@@ -82,16 +98,23 @@ public class Processo {
 	
 	public StringBuilder getAudiencias() {
 		StringBuilder sb = new StringBuilder();
-		//TODO implement
+		for (Audiencia a : audiencias) {
+			sb.append("\n" + a.getRecomendacoes() + "\n");
+		}
 		return sb;
+	}
+	
+	public String nomeVS() {
+		return this.cliente.getPessoa().getNome() + " vs " + this.parteContraria.getNome();
 	}
 
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		
-		sb.append(this.getCliente().getPessoa().getNome() + " vs " + this.getParteContraria().getNome());
+		sb.append(this.nomeVS());
 		sb.append("\nNumero do Processo: " + this.getNumero());
 		sb.append("\nData de abertura: " + this.getDataAbertura());
+		sb.append("\nAdvogado: " + this.getAdvogado().getPessoa().getNome());
 		sb.append("\nTribunal: " + this.getTribunal().getSigla() + "\n\n");
 		
 		return sb.toString();

@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import model.*;
+import util.Validacoes;
 
 public class AdvogadoController implements Serializable {
 
@@ -19,17 +20,21 @@ public class AdvogadoController implements Serializable {
 	
 	public Advogado getAdvogado(String oab) {
 		Advogado c = this.advogados.get(oab);
-		if(c != null && advogados.containsKey(oab)){
+		if(c != null && advogados.containsKey(oab) && Validacoes.isOab(oab)){
 			return this.advogados.get(oab);
 		}else {
 			throw new RuntimeException("Advogado não cadastrado. Deseja realizar este cadastro?");
 		}
 	}
 	
+	public Map<String, Advogado> getAdvogados(){
+		return this.advogados;
+	}
+	
 	public void addAdvogado(String cadastro, String oab, String curriculo) {
 		Pessoa p = MainController.getPessoaController().getPessoa(cadastro);
 		Advogado a = new Advogado(p, oab, curriculo);
-		this.advogados.put(a.getPessoa().getCadastroRF(), a);
+		this.advogados.put(a.getOab(), a);
 	}
 	
 	public StringBuilder listar() {

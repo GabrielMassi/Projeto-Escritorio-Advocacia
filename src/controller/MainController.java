@@ -23,8 +23,6 @@ public class MainController implements Serializable {
 	private AdvogadoController advogadoController;
 	
 	private AudienciaController audienciaController;
-	
-	private ContaController contaController;
 
 	private TribunalController tribunalController;
 
@@ -41,8 +39,6 @@ public class MainController implements Serializable {
 		 advogadoController = new  AdvogadoController();
 		
 		audienciaController = new AudienciaController();
-		
-		    contaController = new     ContaController();
 		
 		 tribunalController = new  TribunalController();
 		
@@ -73,10 +69,6 @@ public class MainController implements Serializable {
 	
 	public static AudienciaController getAudienciaController() {
 		return instance.audienciaController;
-	}
-	
-	public static ContaController getContaController() {
-		return instance.contaController;
 	}
 
 	public static TribunalController getTribunalController() {

@@ -30,11 +30,12 @@ public class ProcessoController implements Serializable {
 		return processos.keySet();
 	}
 	
-	public void addProcesso(String cadRF_cliente, String cadRF_prt_contraria, String sigla) {
+	public void addProcesso(String cadRF_cliente, String cadRF_prt_contraria, String sigla, String oab) {
 		Cliente cli = MainController.getClienteController().getCliente(cadRF_cliente);
 		Pessoa contr = MainController.getPessoaController().getPessoa(cadRF_prt_contraria);
 		Tribunal trib = MainController.getTribunalController().getTribunal(sigla);
-		Processo p = new Processo(cli, contr, trib);
+		Advogado adv = MainController.getAdvogadoController().getAdvogado(oab);
+		Processo p = new Processo(cli, contr, trib, adv);
 		this.processos.put(p.getNumero(), p);
 	}
 	
@@ -44,10 +45,7 @@ public class ProcessoController implements Serializable {
 		
 		for (Map.Entry<Long, Processo> p : processos.entrySet()) {
 			
-			sb.append(p.getValue().getCliente().getPessoa().getNome() + " vs " + p.getValue().getParteContraria().getNome());
-			sb.append("\nNumero do Processo: " + p.getValue().getNumero());
-			sb.append("\nData de abertura: " + p.getValue().getDataAbertura());
-			sb.append("\nTribunal: " + p.getValue().getTribunal().getSigla() + "\n\n");
+			sb.append(p.toString());
 			
 		}
 		

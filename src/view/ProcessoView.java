@@ -10,7 +10,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controller.MainController;
@@ -28,6 +27,8 @@ public class ProcessoView extends JFrame {
 	JComboBox<String> comboBoxCliente;
 	JComboBox<String> comboBoxPrtContraria;
 	JComboBox<String> comboBoxTribunal;
+	JComboBox<String> comboBoxAdvogado;
+	JComboBox<Long> comboBoxProcesso;
 	
 	public ProcessoView() {
 		setResizable(false);
@@ -54,7 +55,7 @@ public class ProcessoView extends JFrame {
 		btnNovoProcesso.setBounds(352, 25, 126, 25);
 		btnNovoProcesso.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				actionNovoProcesso(comboBoxCliente.getSelectedItem().toString().substring(0, 11), comboBoxPrtContraria.getSelectedItem().toString().substring(0, 11), comboBoxTribunal.getSelectedItem().toString());
+				actionNovoProcesso(comboBoxCliente.getSelectedItem().toString().substring(0, 11), comboBoxPrtContraria.getSelectedItem().toString().substring(0, 11), comboBoxTribunal.getSelectedItem().toString(), comboBoxAdvogado.getSelectedItem().toString().substring(0, 6));
 			}
 		});
 		contentPane.add(btnNovoProcesso);
@@ -63,7 +64,7 @@ public class ProcessoView extends JFrame {
 		btnVerProcesso.setBounds(120, 25, 142, 25);
 		btnVerProcesso.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				actionVerProcesso();
+				actionVerProcessoView(Integer.parseInt(comboBoxProcesso.getSelectedItem().toString()));
 			}
 		});
 		contentPane.add(btnVerProcesso);
@@ -92,7 +93,7 @@ public class ProcessoView extends JFrame {
 		contentPane.add(lblTribunal);
 		
 		comboBoxTribunal = new JComboBox<String>();
-		comboBoxTribunal.setBounds(12, 166, 328, 24);
+		comboBoxTribunal.setBounds(12, 166, 94, 24);
 		fillT(comboBoxTribunal, MainController.getTribunalController().getTribunais());
 		contentPane.add(comboBoxTribunal);
 		
@@ -133,11 +134,26 @@ public class ProcessoView extends JFrame {
 		
 		JButton btnNovaPessoa = new JButton("Nova Pessoa");
 		btnNovaPessoa.setBounds(352, 114, 131, 25);
+		btnNovaPessoa.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				//TODO
+			}
+		});
 		contentPane.add(btnNovaPessoa);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(263, 25, 77, 24);
-		contentPane.add(comboBox);
+		comboBoxProcesso = new JComboBox<Long>();
+		comboBoxProcesso.setBounds(263, 25, 77, 24);
+		fillPr(comboBoxProcesso, MainController.getProcessoController().getProcessos());
+		contentPane.add(comboBoxProcesso);
+		
+		JLabel lblAdvogado = new JLabel("Advogado");
+		lblAdvogado.setBounds(110, 150, 121, 15);
+		contentPane.add(lblAdvogado);
+		
+		comboBoxAdvogado = new JComboBox<String>();
+		comboBoxAdvogado.setBounds(110, 166, 230, 24);
+		fillA(comboBoxAdvogado, MainController.getAdvogadoController().getAdvogados().keySet());
+		contentPane.add(comboBoxAdvogado);
 		
 	}
 	
@@ -159,18 +175,27 @@ public class ProcessoView extends JFrame {
 		}
 	}
 	
-	private void actionNovoProcesso(String cadClientes, String cadPrtContraria, String trib) {
+	private void fillA(JComboBox<String> jcb, Set<String> set) {
+		for (String oab : set) {
+			jcb.addItem(oab + " - (" + MainController.getAdvogadoController().getAdvogado(oab).getPessoa().getNome() + ")" );
+		}
+	}
+	
+	private void fillPr(JComboBox<Long> jcb, Set<Long> set) {
+		for (Long num : set) 
+			jcb.addItem(num);
+		
+	}
+	
+	
+	private void actionNovoProcesso(String cadClientes, String cadPrtContraria, String trib, String oab) {
 		
 		try {
-			MainController.getProcessoController().addProcesso(cadClientes, cadPrtContraria, trib);
+			MainController.getProcessoController().addProcesso(cadClientes, cadPrtContraria, trib, oab);
 									
 		}catch(RuntimeException e) {
 			//TODO
 		}
-	}
-	
-	private void actionVerProcesso() {
-		
 	}
 	
 	private void actionListar(ButtonGroup bg, JTextArea t) {
@@ -194,4 +219,10 @@ public class ProcessoView extends JFrame {
 
         return null;
     }
+	
+	private void actionVerProcessoView(long a) {
+		VerProcessoView verProcessoView = new VerProcessoView(a);
+		verProcessoView.setVisible(true);
+	}
+	
 }

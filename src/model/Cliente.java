@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
+import util.EFaseProcesso;
+
 public class Cliente{
 
 	private Pessoa pessoa;

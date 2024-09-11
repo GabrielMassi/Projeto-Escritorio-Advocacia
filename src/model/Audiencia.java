@@ -8,40 +8,20 @@ public class Audiencia {
 	
 	private final Date data = new Date();
 	
-	private Advogado advogado;
-	
 	private String recomendacoes;
 
 	
 //------------------------
 	
-	public Audiencia(Processo processo, Advogado advogado, String recomendacoes) {
+	public Audiencia(Processo processo, String recomendacoes) {
 		super();
 		this.processo = processo;
-		this.advogado = advogado;
 		this.recomendacoes = recomendacoes;
 	}
-
-
-	public Advogado getAdvogado() {
-		return advogado;
-	}
-
-
-	public void setAdvogado(Advogado advogado) {
-		this.advogado = advogado;
-	}
-
 
 	public String getRecomendacoes() {
 		return recomendacoes;
 	}
-
-
-	public void setRecomendacoes(String recomendacoes) {
-		this.recomendacoes = recomendacoes;
-	}
-
 
 	public Processo getProcesso() {
 		return processo;
@@ -51,7 +31,6 @@ public class Audiencia {
 	public Date getData() {
 		return data;
 	}
-	
 	
 	
 }

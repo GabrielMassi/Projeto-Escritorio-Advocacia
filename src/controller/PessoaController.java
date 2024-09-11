@@ -32,7 +32,7 @@ public class PessoaController implements Serializable {
 	}
 	
 	public void addPessoaFisica(String nome, String cadastro) {
-		if(ValidaCPF.isCPF(cadastro)){
+		if(Validacoes.isCPF(cadastro)){
 			Pessoa p = new PessoaFisica(nome, cadastro);
 			pessoas.put(p.getCadastroRF(), p);
 		}else
@@ -40,7 +40,7 @@ public class PessoaController implements Serializable {
 	}
 	
 	public void addPessoaJuridica(String nome, String cadastro) {
-		if(ValidaCPF.isCPF(cadastro)){
+		if(Validacoes.isCPF(cadastro)){
 			Pessoa p = new PessoaJuridica(nome, cadastro);
 			pessoas.put(p.getCadastroRF(), p);
 		}else {
