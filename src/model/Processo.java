@@ -7,6 +7,8 @@ public class Processo {
 
 	private final long numero;
 	
+	private static long increment = 0;
+	
 	private final Date dataAbertura = new Date();
 	
 	private EFaseProcesso fase;
@@ -23,10 +25,12 @@ public class Processo {
 	
 //-------------------
 
-	public Processo(long numero, Cliente cliente, Pessoa parteContraria) {
-		this.numero = numero;
+	public Processo(Cliente cliente, Pessoa parteContraria, Tribunal tribunal) {
+		this.numero = increment;
+		increment++;
 		this.cliente = cliente;
 		this.parteContraria = parteContraria;
+		this.tribunal = tribunal;
 		this.fase = EFaseProcesso.INICIAL;
 	}
 	
@@ -82,9 +86,16 @@ public class Processo {
 		return sb;
 	}
 
-	@Override
 	public String toString() {
-		return "Processo [numero=" + numero + ", dataAbertura=" + dataAbertura + ", cliente=" + cliente + ", conta=" + conta + "]";
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append(this.getCliente().getPessoa().getNome() + " vs " + this.getParteContraria().getNome());
+		sb.append("\nNumero do Processo: " + this.getNumero());
+		sb.append("\nData de abertura: " + this.getDataAbertura());
+		sb.append("\nTribunal: " + this.getTribunal().getSigla() + "\n\n");
+		
+		return sb.toString();
+		
 	}
 	
 	

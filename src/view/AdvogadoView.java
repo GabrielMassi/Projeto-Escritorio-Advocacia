@@ -16,7 +16,6 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 
 import controller.MainController;
-import javax.swing.SwingConstants;
 
 public class AdvogadoView extends JFrame {
 
@@ -27,7 +26,6 @@ public class AdvogadoView extends JFrame {
 	private JTextField textFieldNome;
 	private JTextField textFieldTelefone;
 	private JTextField textFieldEmail;
-	private JTextField textFieldBuscar;
 	private JTextArea listaAdv;
 	private JTextField textFieldOab;
 	private JTextArea textAreaCurriculo;
@@ -112,11 +110,6 @@ public class AdvogadoView extends JFrame {
 		scrollPane.setBounds(12, 227, 337, 111);
 		contentPane.add(scrollPane);
 		
-		
-		JButton btnEditar = new JButton("Editar");
-		btnEditar.setBounds(384, 79, 98, 25);
-		contentPane.add(btnEditar);
-		
 		JButton btnListar = new JButton("Listar");
 		btnListar.setBounds(375, 227, 107, 25);
 		btnListar.addActionListener(new ActionListener() {
@@ -126,16 +119,6 @@ public class AdvogadoView extends JFrame {
 			}
 		});
 		contentPane.add(btnListar);
-		
-		
-		textFieldBuscar = new JTextField();
-		textFieldBuscar.setBounds(365, 279, 117, 19);
-		contentPane.add(textFieldBuscar);
-		textFieldBuscar.setColumns(10);
-		
-		JButton btnBuscaroab = new JButton("Buscar (OAB)");
-		btnBuscaroab.setBounds(365, 302, 118, 25);
-		contentPane.add(btnBuscaroab);
 		
 		
 		JLabel lbloab = new JLabel("OAB");

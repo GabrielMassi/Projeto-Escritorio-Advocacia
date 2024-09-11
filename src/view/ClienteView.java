@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -16,11 +15,9 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 
 import controller.MainController;
-import javax.swing.SwingConstants;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.ButtonGroup;
-import java.awt.Component;
 
 public class ClienteView extends JFrame {
 
@@ -31,7 +28,6 @@ public class ClienteView extends JFrame {
 	private JTextField textFieldCadastro;
 	private JTextField textFieldTelefone;
 	private JTextField textFieldEmail;
-	private JTextField textFieldBuscaCad;
 	private JTextArea listaClientes;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
@@ -98,7 +94,7 @@ public class ClienteView extends JFrame {
 		
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.setBounds(384, 45, 98, 25);
+		btnCadastrar.setBounds(375, 45, 107, 25);
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean success = cadastrarCliente(textFieldNome.getText(), textFieldCadastro.getText(), textFieldTelefone.getText(), textFieldEmail.getText(), buttonGroup.isSelected(rdbtnCpf.getModel()));
@@ -111,10 +107,6 @@ public class ClienteView extends JFrame {
 		});
 		contentPane.add(btnCadastrar);
 		
-		JButton btnEditar = new JButton("Editar");
-		btnEditar.setBounds(384, 91, 98, 25);
-		contentPane.add(btnEditar);
-		
 		JButton btnListar = new JButton("Listar");
 		btnListar.setBounds(375, 141, 107, 25);
 		btnListar.addActionListener(new ActionListener() {
@@ -124,16 +116,6 @@ public class ClienteView extends JFrame {
 			}
 		});
 		contentPane.add(btnListar);
-		
-		JButton btnBuscarcpf = new JButton("Buscar");
-		btnBuscarcpf.setBounds(365, 216, 118, 25);
-		contentPane.add(btnBuscarcpf);
-		
-		textFieldBuscaCad = new JTextField();
-				textFieldBuscaCad.setBounds(365, 193, 117, 19);
-		contentPane.add(textFieldBuscaCad);
-		textFieldBuscaCad.setColumns(10);
-		textFieldBuscaCad.setToolTipText("CPF ou CNPJ");
 
 		listaClientes = new JTextArea();
 		listaClientes.setEditable(false);

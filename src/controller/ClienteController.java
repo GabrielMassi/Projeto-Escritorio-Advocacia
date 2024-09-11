@@ -51,4 +51,8 @@ public class ClienteController implements Serializable {
 		
 	}
 	
+	public Map<String, Cliente> getClientes(){
+		return this.clientes;
+	}
+	
 }

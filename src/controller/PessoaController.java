@@ -27,6 +27,10 @@ public class PessoaController implements Serializable {
 		}
 	}
 	
+	public Map<String, Pessoa> getPessoas(){
+		return this.pessoas;
+	}
+	
 	public void addPessoaFisica(String nome, String cadastro) {
 		if(ValidaCPF.isCPF(cadastro)){
 			Pessoa p = new PessoaFisica(nome, cadastro);

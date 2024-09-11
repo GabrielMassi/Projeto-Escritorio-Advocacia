@@ -9,7 +9,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JTextField;
 
 public class MenuView extends JFrame {
 
@@ -98,13 +97,6 @@ public class MenuView extends JFrame {
 	private void actionTribunalView() {
 		TribunalView tribunalView = new TribunalView();
 		tribunalView.setVisible(true);
-	}
-	private int absX(int x) {
-		return (x*this.contentPane.getBounds().width)/450;
-	}
-	
-	private int absY(int y) {
-		return (y*this.contentPane.getBounds().height)/300;
 	}
 	
 }
