@@ -32,4 +32,23 @@ public class ClienteController implements Serializable {
 		this.clientes.put(c.getPessoa().getCadastroRF(), c);
 	}
 	
+	public StringBuilder listar() {
+		
+		StringBuilder sb = new StringBuilder();
+		
+		for (Map.Entry<String, Cliente> c: clientes.entrySet()) {
+			
+			sb.append("Nome: " + c.getValue().getPessoa().getNome());
+			sb.append("\nCPF/CNPJ: " + c.getValue().getPessoa().getCadastroRF());
+			sb.append("\nEmail: " + c.getValue().getPessoa().getEmail());
+			sb.append("\nTelefone: " + c.getValue().getPessoa().getTelefone());
+			sb.append("\nProcessos abertos: " + c.getValue().processosAbertos());
+			sb.append("\nSaldo: " + c.getValue().getSaldoContas() + "\n\n");
+						
+		}
+		
+		return sb;
+		
+	}
+	
 }

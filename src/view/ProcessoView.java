@@ -25,6 +25,7 @@ public class ProcessoView extends JFrame {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
 	public ProcessoView() {
+		setResizable(false);
 		initialize();
 	}
 	

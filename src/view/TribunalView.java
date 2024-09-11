@@ -24,6 +24,7 @@ public class TribunalView extends JFrame {
 	private JTextField textField_3;
 	
 	public TribunalView() {
+		setResizable(false);
 		initialize();
 	}
 	

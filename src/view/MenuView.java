@@ -19,6 +19,7 @@ public class MenuView extends JFrame {
 
 
 	public MenuView() {
+		setResizable(false);
 		initialize();
 	}
 
@@ -31,8 +32,9 @@ public class MenuView extends JFrame {
 
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
+		
 		this.setContentPane(contentPane);	
+		
 		
 		
 		
@@ -97,4 +99,12 @@ public class MenuView extends JFrame {
 		TribunalView tribunalView = new TribunalView();
 		tribunalView.setVisible(true);
 	}
+	private int absX(int x) {
+		return (x*this.contentPane.getBounds().width)/450;
+	}
+	
+	private int absY(int y) {
+		return (y*this.contentPane.getBounds().height)/300;
+	}
+	
 }

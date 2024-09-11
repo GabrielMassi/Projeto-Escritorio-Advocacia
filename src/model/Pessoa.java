@@ -6,7 +6,7 @@ public abstract class Pessoa {
 	
 	private String email;
 	
-	private long telefone;
+	private String telefone;
 	
 //----------------------------
 	
@@ -33,11 +33,11 @@ public abstract class Pessoa {
 		this.email = email;
 	}
 
-	public long getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
 
-	public void setTelefone(long telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 	

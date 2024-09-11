@@ -55,4 +55,26 @@ public class Advogado {
 		return sb;
 	}
 	
+	public int processosAbertos() {
+		int n = 0;
+		for (Processo processo : processos) {
+			if(processo.getFase() != EFaseProcesso.ENCERRADO)
+				n++;
+		}
+		return n;		
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Nome: " + this.getPessoa().getNome());
+		sb.append("\nOAB: " + this.getOab());
+		sb.append("\nEmail: " + this.getPessoa().getEmail());
+		sb.append("\nTelefone: " + this.getPessoa().getTelefone());
+		sb.append("\nProcessos abertos: " + this.processosAbertos());
+		sb.append("\nCurrículo: " + this.getCurriculo());
+		String s = sb.toString();
+		return s;
+	}
+	
 }

@@ -38,4 +38,13 @@ public class Cliente{
 		this.processos.add(p);
 	}
 	
+	public int processosAbertos() {
+		int n = 0;
+		for (Processo processo : processos) {
+			if(processo.getFase() != EFaseProcesso.ENCERRADO)
+				n++;
+		}
+		return n;		
+	}
+	
 }

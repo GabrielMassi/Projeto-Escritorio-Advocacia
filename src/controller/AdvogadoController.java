@@ -19,7 +19,7 @@ public class AdvogadoController implements Serializable {
 	
 	public Advogado getAdvogado(String oab) {
 		Advogado c = this.advogados.get(oab);
-		if(c != null){
+		if(c != null && advogados.containsKey(oab)){
 			return this.advogados.get(oab);
 		}else {
 			throw new RuntimeException("Advogado não cadastrado. Deseja realizar este cadastro?");
@@ -30,6 +30,24 @@ public class AdvogadoController implements Serializable {
 		Pessoa p = MainController.getPessoaController().getPessoa(cadastro);
 		Advogado a = new Advogado(p, oab, curriculo);
 		this.advogados.put(a.getPessoa().getCadastroRF(), a);
+	}
+	
+	public StringBuilder listar() {
+		
+		StringBuilder sb = new StringBuilder();
+		
+		for (Map.Entry<String, Advogado> c: advogados.entrySet()) {
+			
+			sb.append("Nome: " + c.getValue().getPessoa().getNome());
+			sb.append("\nOAB: " + c.getValue().getOab());
+			sb.append("\nEmail: " + c.getValue().getPessoa().getEmail());
+			sb.append("\nTelefone: " + c.getValue().getPessoa().getTelefone());
+			sb.append("\nProcessos abertos: " + c.getValue().processosAbertos() + "\n\n");
+						
+		}
+		
+		return sb;
+		
 	}
 	
 }
